@@ -1,0 +1,14 @@
+# Foldery z multimediami i plikami binarnymi (widzę ich nazwy, ale nie edytuję zawartości)
+images/
+docs/*.pdf
+
+# Systemowe i kontrola wersji
+.git/
+.gitignore
+
+# Jeśli pojawią się w przyszłości:
+node_modules/
+venv/
+.env
+__pycache__/
+.DS_Store

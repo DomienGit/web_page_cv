@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominik - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#skills">Technologie</a></li>
+                    <li><a href="#projects">Projekty</a></li>
+                    <li><a href="#about">O mnie</a></li>
+                    <li><a href="#footer">Kontakt</a></li>
+                    <li><a href="docs/cv.pdf" target="_blank">CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <video autoplay muted loop id="hero-video">
+                <source src="images/black.mp4" type="video/mp4">
+            </video>
+            <div class="hero-content">
+                <h1 style="font-family: 'Roboto', sans-serif; font-size: 27px; font-weight: bold;">Cześć!</h1>
+                <p style="font-family: 'Roboto', sans-serif; font-size: 27px;">Jestem Dominik. Tworzenie projektów w Pythonie i pisanie skryptów sprawia mi ogromną frajdę – podobnie jak jazda na rowerze, odkrywanie nowych smaków i próbowanie nowych rzeczy.<br><br>Zapraszam do kontaktu i do zapoznania się z moimi projektami – to moje pierwsze, amatorskie, ale pełne pasji kroki w świecie programowania.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section" data-sal="slide-up">
+            <div class="container">
+                <h2>Technologie</h2>
+                <ul class="skills-list">
+                    <li>Python</li>
+                    <li>Docker</li>
+                    <li>FastAPI</li>
+                    <li>Unittest</li>
+                    <li>PostgreSQL</li>
+                    <li>Git</li>
+                    <li>Linux</li>
+                    <li>CI/CD</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section" data-sal="slide-up">
+            <video autoplay muted loop id="projects-video">
+                <source src="images/black.mp4" type="video/mp4">
+            </video>
+            <div class="container">
+                <h2>Projekty</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-project="calendar-automation">
+                        <div class="project-title">Calendar automation</div>
+                        <div class="project-details">
+                            <p>Automatyzacja tworzenia wydarzeń w Google Kalendarzu na podstawie e-maili. System monitoruje skrzynkę i wykorzystuje AI (OpenAI) do ekstrakcji szczegółów spotkań.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>FastAPI</span><span>OpenAI API</span><span>Google Calendar API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="lotnisko">
+                        <div class="project-title">Lotnisko</div>
+                        <div class="project-details">
+                            <p>Symulacja lotniska w czasie rzeczywistym z wizualizacją 2D i wielowątkowym zarządzaniem ruchem samolotów.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>FastAPI</span><span>Pygame</span><span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="yt-lottery">
+                        <div class="project-title">YTLottery</div>
+                        <div class="project-details">
+                            <p>Aplikacja webowa hostowana na serwerze VPS, służąca do losowań na żywo na YouTube. Automatycznie pobiera uczestników z czatu i oferuje animację "slot machine".</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>FastAPI</span><span>GSAP</span><span>Vanilla JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="client-server">
+                        <div class="project-title">Client - Server</div>
+                        <div class="project-details">
+                            <p>Aplikacja z uwierzytelnianiem i bezpiecznym systemem wymiany wiadomości oparta na socketach.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>Socket</span><span>SQLite</span><span>Hashlib</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="devlog">
+                        <div class="project-title">Devlog</div>
+                        <div class="project-details">
+                            <p>Dziennik programisty z automatycznym tagowaniem wpisów przy użyciu NLP (spaCy) i konteneryzacją Docker.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="rest-api-lotnisko">
+                        <div class="project-title">REST API Lotnisko</div>
+                        <div class="project-details">
+                            <p>Interfejs API do monitorowania stanu lotniska, historii lądowań oraz analizy danych o kolizjach.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="spotify-api">
+                        <div class="project-title">Spotify API</div>
+                        <div class="project-details">
+                            <p>Integracja pozwalająca na sterowanie muzyką i wybór albumów bezpośrednio przez Spotify API.</p>
+                            <div class="project-technologies">
+                                <span>Python</span><span>Requests</span><span>Spotify API</span><span>OAuth2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="about" class="content-section" data-sal="slide-up">
+            <div class="container about-me-container">
+                <div class="about-me-image">
+                    <img src="images/me.jpg" alt="Dominik Solpa">
+                </div>
+                <div class="about-me-text">
+                    <h2>O mnie</h2>
+                    <p>Jestem osobą otwartą i komunikatywną, stawiam na współpracę i wymianę wiedzy z bardziej doświadczonymi członkami zespołu. Chętnie zadaję pytania i korzystam z feedbacku, aby stale doskonalić swoje umiejętności. Wcześniej pracowałem w różnych branżach, co nauczyło mnie elastyczności, odpowiedzialności i skutecznej współpracy z ludźmi o różnych charakterach. Wiem, że programowanie to nie tylko kod, ale przede wszystkim rozwiązywanie problemów i wspieranie zespołu w realizacji celów biznesowych.</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer class="main-footer">
+        <video autoplay muted loop id="footer-video">
+            <source src="images/black.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <h2>Kontakt</h2>
+            <p><a href="mailto:domien02311@gmail.com" style="color: #fff; text-decoration: none; vertical-align: middle;"><img src="images/gmail.png" alt="Email" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 8px; filter: invert(1);"></a> domien02311@gmail.com</p>
+            <p>
+                <a href="https://www.linkedin.com/in/dominiksolpa" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/linkedin.png" alt="LinkedIn" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
+                <a href="https://www.instagram.com/solpadominik" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/instagram.png" alt="Instagram" style="height: 30px; width: 30px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
+                <a href="https://gitlab.com/Domien023" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/gitlab.png" alt="GitLab" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
+            </p>
+            <p>&copy; 2025 Dominik Solpa. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
