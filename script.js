@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll('main > section');
     const navLinks = document.querySelectorAll('.main-nav a');
     const logoLink = document.querySelector('.logo');
+    const footer = document.querySelector('.main-footer');
     let currentSectionIndex = 0;
     let isScrolling = false;
 
@@ -20,10 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Set animations for visible elements
                 entry.target.classList.add('is-visible');
-
-                // Update the current section index when a section is mostly visible
                 const index = Array.from(sections).indexOf(entry.target);
                 if (index !== -1) {
                     currentSectionIndex = index;
@@ -33,29 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.7 // A threshold of 0.7 means the section is considered "current" when 70% visible
+        threshold: 0.6
     });
-    sections.forEach(section => observer.observe(section)); // Observe all sections
+    sections.forEach(section => observer.observe(section));
 
     // --- Smooth Scrolling Logic ---
     function scrollToSection(index) {
         if (index >= 0 && index < sections.length) {
             isScrolling = true;
             sections[index].scrollIntoView({ behavior: 'smooth' });
+            
+            // Allow interactions after animation
+            setTimeout(() => {
+                isScrolling = false;
+            }, 800);
         }
     }
-    
-    // --- Event listener for when scroll animation finishes ---
-    window.addEventListener('scrollend', () => {
-        // Allow new scroll interactions only after the previous one has completely finished
-        isScrolling = false;
-    });
 
-    const footer = document.querySelector('.main-footer');
-
-    // --- Wheel Event Listener ---
+    // --- Wheel Event Listener (Magnetic Scroll) ---
     window.addEventListener('wheel', (event) => {
-        // If a smooth scroll animation is in progress, ignore new wheel events
         if (isScrolling) {
             event.preventDefault();
             return;
@@ -63,133 +57,112 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const currentSection = sections[currentSectionIndex];
 
-        // Handle showing/hiding the footer
-        if (currentSection.id === 'about' && event.deltaY > 0) {
+        // Handle footer visibility ONLY in the last section
+        if (currentSection.id === 'about' && event.deltaY > 0 && !footer.classList.contains('is-visible')) {
             event.preventDefault();
             footer.classList.add('is-visible');
             return;
         } 
+        
         if (footer.classList.contains('is-visible') && event.deltaY < 0) {
             event.preventDefault();
             footer.classList.remove('is-visible');
             return;
         }
 
-        // Special handling for the 'projects' section to allow internal scrolling
+        // If footer is visible, don't allow section scrolling up until footer is hidden
+        if (footer.classList.contains('is-visible')) return;
+
+        // Special handling for the 'projects' section internal scroll
         if (currentSection.id === 'projects') {
             const { scrollTop, scrollHeight, clientHeight } = currentSection;
-
-            // Check if the section is scrollable
             if (scrollHeight > clientHeight) {
-                // Scrolling down: if not at the bottom, allow native scroll and exit
-                if (event.deltaY > 0 && scrollTop + clientHeight < scrollHeight - 1) {
-                    return;
-                }
-                // Scrolling up: if not at the top, allow native scroll and exit
-                if (event.deltaY < 0 && scrollTop > 1) {
-                    return;
-                }
+                if (event.deltaY > 0 && scrollTop + clientHeight < scrollHeight - 5) return;
+                if (event.deltaY < 0 && scrollTop > 5) return;
             }
         }
 
-        // If we're here, we're performing a section-to-section scroll.
-        // Prevent the default wheel action to avoid double-scrolling.
-        event.preventDefault();
-
-        // Determine scroll direction and trigger section change
+        // Section switching
         if (event.deltaY > 0) {
-            // Scrolling down
             if (currentSectionIndex < sections.length - 1) {
+                event.preventDefault();
                 scrollToSection(currentSectionIndex + 1);
             }
         } else {
-            // Scrolling up
             if (currentSectionIndex > 0) {
+                event.preventDefault();
                 scrollToSection(currentSectionIndex - 1);
             }
         }
-    }, { passive: false }); // passive: false is needed to call preventDefault
+    }, { passive: false });
 
-    // --- Navigation Link Listeners ---
+    // --- Navigation Links ---
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             const targetId = link.getAttribute('href');
-
             if (targetId.startsWith('#')) {
                 event.preventDefault();
-
+                
                 if (targetId === '#footer') {
-                    scrollToSection(sections.length - 1); // Scroll to the last section
-                    setTimeout(() => {
-                        footer.classList.add('is-visible');
-                    }, 800); // Delay to allow for scroll animation
+                    scrollToSection(sections.length - 1);
+                    setTimeout(() => footer.classList.add('is-visible'), 800);
                     return;
                 }
 
                 const targetSection = document.querySelector(targetId);
                 const targetIndex = Array.from(sections).indexOf(targetSection);
-
                 if (targetIndex !== -1) {
+                    footer.classList.remove('is-visible');
                     scrollToSection(targetIndex);
                 }
             }
         });
     });
 
-    // --- Logo Link Listener ---
     logoLink.addEventListener('click', (e) => {
         e.preventDefault();
+        footer.classList.remove('is-visible');
         scrollToSection(0);
     });
 
-    // --- Projects Background Height ---
+    // --- Projects Video Height Sync ---
     const projectsSection = document.getElementById('projects');
     const projectsVideo = document.getElementById('projects-video');
-    let styleSheet = null;
-
-    function setProjectsBackgroundHeight() {
-        if (!styleSheet) {
-            styleSheet = document.createElement('style');
-            document.head.appendChild(styleSheet);
+    function syncProjectsHeight() {
+        if (projectsSection && projectsVideo) {
+            projectsVideo.style.height = `${projectsSection.scrollHeight}px`;
         }
-        const scrollHeight = projectsSection.scrollHeight;
-        // Set height of video
-        projectsVideo.style.height = `${scrollHeight}px`;
-        // Set height of overlay
-        styleSheet.innerHTML = `#projects::after { height: ${scrollHeight}px; }`;
     }
+    setTimeout(syncProjectsHeight, 500);
+    window.addEventListener('resize', syncProjectsHeight);
 
-    // Set height on load (with a delay) and resize
-    setTimeout(setProjectsBackgroundHeight, 100);
-    window.addEventListener('resize', setProjectsBackgroundHeight);
+    // --- Project Card Clicks ---
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const project = card.getAttribute('data-project');
+            let url = '';
+            switch(project) {
+                case 'calendar-automation': url = 'https://gitlab.com/Domien023/calendar-automation'; break;
+                case 'lotnisko': url = 'https://gitlab.com/Domien023/airport-2.git'; break;
+                case 'yt-lottery': url = 'https://ytlottery.pl'; break;
+                case 'client-server': url = 'https://gitlab.com/Domien023/client-server.git'; break;
+                case 'devlog': url = 'https://gitlab.com/Domien023/devlog.git'; break;
+                case 'rest-api-lotnisko': url = 'https://gitlab.com/Domien023/rest-api-airport.git'; break;
+                case 'spotify-api': url = 'https://gitlab.com/Domien023/spotify-api.git'; break;
+            }
+            if (url) window.open(url, '_blank');
+        });
+    });
 
-    
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        const projectName = card.getAttribute('data-project');
-
-        let url = '';
-        if (projectName === 'calendar-automation') {
-            url = 'https://gitlab.com/Domien023/calendar-automation'; // Assumption, update if different
-        } else if (projectName === 'lotnisko') {
-            url = 'https://gitlab.com/Domien023/airport-2.git';
-        } else if (projectName === 'yt-lottery') {
-            url = 'https://ytlottery.pl';
-        } else if (projectName === 'client-server') {
-            url = 'https://gitlab.com/Domien023/client-server.git';
-        } else if (projectName === 'devlog') {
-            url = 'https://gitlab.com/Domien023/devlog.git';
-        } else if (projectName === 'rest-api-lotnisko') {
-            url = 'https://gitlab.com/Domien023/rest-api-airport.git';
-        } else if (projectName === 'spotify-api') {
-            url = 'https://gitlab.com/Domien023/spotify-api.git';
-        }
-
-        if (url) {
-            card.addEventListener('click', () => {
-                window.open(url, '_blank');
-            });
-        }
+    // --- Technology List Toggle ---
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach(item => {
+        const header = item.querySelector('.skill-header');
+        header.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = item.classList.contains('active');
+            skillItems.forEach(otherItem => otherItem.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
     });
 });
