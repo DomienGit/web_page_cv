@@ -402,7 +402,7 @@ body {
 }
 
 .skill-item.active .sub-skills {
-    max-height: 300px;
+    max-height: 500px;
     padding: 0 1rem 1.5rem 1rem;
 }
 
@@ -417,6 +417,7 @@ body {
     padding: 2px 0;
     box-shadow: none;
     font-weight: 400;
+    text-align: center;
 }
 
 .sub-skills li:hover {
@@ -434,6 +435,9 @@ body {
 .skill-item.active .sub-skills li:nth-child(3) { transition-delay: 0.2s; }
 .skill-item.active .sub-skills li:nth-child(4) { transition-delay: 0.25s; }
 .skill-item.active .sub-skills li:nth-child(5) { transition-delay: 0.3s; }
+.skill-item.active .sub-skills li:nth-child(6) { transition-delay: 0.35s; }
+.skill-item.active .sub-skills li:nth-child(7) { transition-delay: 0.4s; }
+.skill-item.active .sub-skills li:nth-child(8) { transition-delay: 0.45s; }
 
 
 

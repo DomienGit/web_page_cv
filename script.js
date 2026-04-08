@@ -165,4 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isActive) item.classList.add('active');
         });
     });
+
+    // --- Close Skill Items on Outside Click ---
+    document.addEventListener('click', (event) => {
+        const activeItem = document.querySelector('.skill-item.active');
+        if (activeItem && !activeItem.contains(event.target)) {
+            activeItem.classList.remove('active');
+        }
+    });
 });
