@@ -20,7 +20,7 @@ To jest osobiste portfolio/CV Dominika Solpy. Strona jest nowoczesnym, jednostro
 3. **Sekcja Projekty**: Karty projektów mają dynamiczne tła i nakładki (overlay) z opisem technologii. Kliknięcie w kartę otwiera odpowiednie repozytorium na GitLab.
 4. **Sticky Header**: Nagłówek zmienia wygląd po przewinięciu (`.scrolled`).
 
-## Wytyczne dla Gemini
+## Wytyczne
 - Zachowuj spójność wizualną (używaj zmiennych CSS z `:root`).
 - Przy modyfikacjach JS uważaj na logikę `isScrolling` i `currentSectionIndex`, aby nie zepsuć autorskiego systemu nawigacji.
 - Preferuj czysty kod bez zewnętrznych bibliotek (Vanilla JS/CSS).

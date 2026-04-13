@@ -8,16 +8,57 @@ document.addEventListener("scroll", () => {
     }
 });
 
+// --- Video Loading ---
+document.querySelectorAll('.bg-video').forEach(video => {
+    if (video.readyState >= 2) {
+        video.classList.add('loaded');
+    } else {
+        video.addEventListener('loadeddata', () => {
+            video.classList.add('loaded');
+        });
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const animatedElements = document.querySelectorAll('[data-sal]');
     const sections = document.querySelectorAll('main > section');
     const navLinks = document.querySelectorAll('.main-nav a');
     const logoLink = document.querySelector('.logo');
-    const footer = document.querySelector('.main-footer');
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
     let currentSectionIndex = 0;
     let isScrolling = false;
 
+    // --- Scroll Indicator ---
+    scrollIndicator.addEventListener('click', () => {
+        scrollToSection(1);
+    });
+
+    // --- Hamburger Menu ---
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('menu-open');
+        mainNav.classList.toggle('menu-open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('menu-open');
+            mainNav.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
     // --- Animation and Section Tracking Observer ---
+    const dotLinks = document.querySelectorAll('.dot-link');
+
+    function updateDotNav(sectionId) {
+        dotLinks.forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.section === sectionId);
+        });
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -25,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const index = Array.from(sections).indexOf(entry.target);
                 if (index !== -1) {
                     currentSectionIndex = index;
+                    updateDotNav(entry.target.id);
                 }
             } else {
                 entry.target.classList.remove('is-visible');
@@ -35,13 +77,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     sections.forEach(section => observer.observe(section));
 
+    // --- Dot Navigation Clicks ---
+    dotLinks.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const targetId = dot.dataset.section;
+            const targetSection = document.getElementById(targetId);
+            const targetIndex = Array.from(sections).indexOf(targetSection);
+            if (targetIndex !== -1) {
+                scrollToSection(targetIndex);
+            }
+        });
+    });
+
     // --- Smooth Scrolling Logic ---
     function scrollToSection(index) {
         if (index >= 0 && index < sections.length) {
             isScrolling = true;
-            sections[index].scrollIntoView({ behavior: 'smooth' });
-            
-            // Allow interactions after animation
+            const targetTop = sections[index].offsetTop;
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
             setTimeout(() => {
                 isScrolling = false;
             }, 800);
@@ -56,22 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const currentSection = sections[currentSectionIndex];
-
-        // Handle footer visibility ONLY in the last section
-        if (currentSection.id === 'about' && event.deltaY > 0 && !footer.classList.contains('is-visible')) {
-            event.preventDefault();
-            footer.classList.add('is-visible');
-            return;
-        } 
-        
-        if (footer.classList.contains('is-visible') && event.deltaY < 0) {
-            event.preventDefault();
-            footer.classList.remove('is-visible');
-            return;
-        }
-
-        // If footer is visible, don't allow section scrolling up until footer is hidden
-        if (footer.classList.contains('is-visible')) return;
 
         // Special handling for the 'projects' section internal scroll
         if (currentSection.id === 'projects') {
@@ -102,17 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = link.getAttribute('href');
             if (targetId.startsWith('#')) {
                 event.preventDefault();
-                
-                if (targetId === '#footer') {
-                    scrollToSection(sections.length - 1);
-                    setTimeout(() => footer.classList.add('is-visible'), 800);
-                    return;
-                }
 
                 const targetSection = document.querySelector(targetId);
                 const targetIndex = Array.from(sections).indexOf(targetSection);
                 if (targetIndex !== -1) {
-                    footer.classList.remove('is-visible');
                     scrollToSection(targetIndex);
                 }
             }
@@ -121,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     logoLink.addEventListener('click', (e) => {
         e.preventDefault();
-        footer.classList.remove('is-visible');
         scrollToSection(0);
     });
 
@@ -152,25 +182,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (url) window.open(url, '_blank');
         });
-    });
-
-    // --- Technology List Toggle ---
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach(item => {
-        const header = item.querySelector('.skill-header');
-        header.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isActive = item.classList.contains('active');
-            skillItems.forEach(otherItem => otherItem.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-        });
-    });
-
-    // --- Close Skill Items on Outside Click ---
-    document.addEventListener('click', (event) => {
-        const activeItem = document.querySelector('.skill-item.active');
-        if (activeItem && !activeItem.contains(event.target)) {
-            activeItem.classList.remove('active');
-        }
     });
 });

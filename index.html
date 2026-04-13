@@ -14,14 +14,19 @@
 <body>
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo"></a>
+            <a href="#" class="logo">DS</a>
+            <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#skills">Technologie</a></li>
                     <li><a href="#projects">Projekty</a></li>
                     <li><a href="#about">O mnie</a></li>
-                    <li><a href="#footer">Kontakt</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
                     <li><a href="docs/cv.pdf" target="_blank">CV</a></li>
                 </ul>
             </nav>
@@ -29,13 +34,20 @@
     </header>
 
     <main>
-        <section id="hero">
-            <video autoplay muted loop id="hero-video">
+        <section id="hero" class="video-section">
+            <div class="video-fallback"></div>
+            <video autoplay muted loop id="hero-video" class="bg-video">
                 <source src="images/black.mp4" type="video/mp4">
             </video>
             <div class="hero-content">
-                <h1 style="font-family: 'Roboto', sans-serif; font-size: 27px; font-weight: bold;">Cześć!</h1>
-                <p style="font-family: 'Roboto', sans-serif; font-size: 27px;">Jestem Dominik. Tworzenie projektów w Pythonie i pisanie skryptów sprawia mi ogromną frajdę – podobnie jak jazda na rowerze, odkrywanie nowych smaków i próbowanie nowych rzeczy.<br><br>Zapraszam do kontaktu i do zapoznania się z moimi projektami – to moje pierwsze, amatorskie, ale pełne pasji kroki w świecie programowania.</p>
+                <h1 class="hero-greeting">Cześć!</h1>
+                <p class="hero-description">Jestem Dominik. Łączę pasję do technologii z praktycznymi umiejętnościami – nie tylko piszę kod w Pythonie, ale też potrafię zautomatyzować jego wdrożenie na serwer.<br>Poza programowaniem ładuję baterie jeżdżąc na rowerze i próbując nowych rzeczy. <br>Aktualnie szukam swojej pierwszej pracy jako Backend Developer, gdzie będę mógł przełożyć moje portfolio na realną wartość dla firmy. <br>Zapraszam do sprawdzenia moich projektów!</p>
+            </div>
+            <div class="scroll-indicator" aria-label="Scroll down">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text">Scroll</span>
             </div>
         </section>
 
@@ -46,7 +58,6 @@
                     <li class="skill-item">
                         <div class="skill-header">
                             Backend & Logika Aplikacji
-                            <span class="toggle-icon">+</span>
                         </div>
                         <ul class="sub-skills">
                             <li><strong>Język:</strong> Python</li>
@@ -58,7 +69,6 @@
                     <li class="skill-item">
                         <div class="skill-header">
                             Bazy Danych
-                            <span class="toggle-icon">+</span>
                         </div>
                         <ul class="sub-skills">
                             <li>PostgreSQL</li>
@@ -70,7 +80,6 @@
                     <li class="skill-item">
                         <div class="skill-header">
                             Infrastruktura & DevOps
-                            <span class="toggle-icon">+</span>
                         </div>
                         <ul class="sub-skills">
                             <li><strong>Konteneryzacja:</strong> Docker</li>
@@ -81,7 +90,6 @@
                     <li class="skill-item">
                         <div class="skill-header">
                             Sztuczna Inteligencja & API
-                            <span class="toggle-icon">+</span>
                         </div>
                         <ul class="sub-skills">
                             <li><strong>AI:</strong> OpenAI API</li>
@@ -92,7 +100,6 @@
                     <li class="skill-item">
                         <div class="skill-header">
                             Testowanie & Jakość Kodu
-                            <span class="toggle-icon">+</span>
                         </div>
                         <ul class="sub-skills">
                             <li><strong>Frameworki testowe:</strong> unittest, pytest</li>
@@ -104,7 +111,8 @@
         </section>
 
         <section id="projects" class="content-section" data-sal="slide-up">
-            <video autoplay muted loop id="projects-video">
+            <div class="video-fallback"></div>
+            <video autoplay muted loop id="projects-video" class="bg-video">
                 <source src="images/black.mp4" type="video/mp4">
             </video>
             <div class="container">
@@ -186,28 +194,68 @@
                 </div>
                 <div class="about-me-text">
                     <h2>O mnie</h2>
-                    <p>Jestem osobą otwartą i komunikatywną, stawiam na współpracę i wymianę wiedzy z bardziej doświadczonymi członkami zespołu. Chętnie zadaję pytania i korzystam z feedbacku, aby stale doskonalić swoje umiejętności. Wcześniej pracowałem w różnych branżach, co nauczyło mnie elastyczności, odpowiedzialności i skutecznej współpracy z ludźmi o różnych charakterach. Wiem, że programowanie to nie tylko kod, ale przede wszystkim rozwiązywanie problemów i wspieranie zespołu w realizacji celów biznesowych.</p>
+                    <p>W pracy stawiam na otwartą komunikację i wymianę wiedzy. Szukam środowiska, w którym będę mógł uczyć się od doświadczonych inżynierów, chętnie przyjmując feedback, aby stale stawać się lepszym programistą. Moje wcześniejsze doświadczenia w innych branżach nauczyły mnie dużej elastyczności, odpowiedzialności za zadania oraz umiejętności dogadywania się z każdym. Doskonale rozumiem, że technologia to tylko narzędzie – na koniec dnia liczy się to, by mój kod rozwiązywał realne problemy i dowoził wartość biznesową dla zespołu.</p>
                 </div>
             </div>
         </section>
 
-        
+        <section id="contact" class="content-section contact-section" data-sal="slide-up">
+            <div class="video-fallback"></div>
+            <video autoplay muted loop id="contact-video" class="bg-video">
+                <source src="images/black.mp4" type="video/mp4">
+            </video>
+            <div class="container">
+                <h2>Kontakt</h2>
+                <p class="contact-subtitle">Masz pytanie lub chcesz współpracować? Napisz do mnie!</p>
+                <div class="contact-links">
+                    <a href="mailto:domien02311@gmail.com" class="contact-card">
+                        <img src="images/gmail.png" alt="Email" class="contact-icon">
+                        <span>domien02311@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dominiksolpa" target="_blank" class="contact-card">
+                        <img src="images/linkedin.png" alt="LinkedIn" class="contact-icon">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/solpadominik" target="_blank" class="contact-card">
+                        <img src="images/instagram.png" alt="Instagram" class="contact-icon">
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://gitlab.com/Domien023" target="_blank" class="contact-card">
+                        <img src="images/gitlab.png" alt="GitLab" class="contact-icon">
+                        <span>GitLab</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
+    <nav class="dot-nav" aria-label="Sekcje strony">
+        <button class="dot-link active" data-section="hero" aria-label="Home">
+            <span class="dot"></span>
+            <span class="dot-label">Home</span>
+        </button>
+        <button class="dot-link" data-section="skills" aria-label="Technologie">
+            <span class="dot"></span>
+            <span class="dot-label">Technologie</span>
+        </button>
+        <button class="dot-link" data-section="projects" aria-label="Projekty">
+            <span class="dot"></span>
+            <span class="dot-label">Projekty</span>
+        </button>
+        <button class="dot-link" data-section="about" aria-label="O mnie">
+            <span class="dot"></span>
+            <span class="dot-label">O mnie</span>
+        </button>
+        <button class="dot-link" data-section="contact" aria-label="Kontakt">
+            <span class="dot"></span>
+            <span class="dot-label">Kontakt</span>
+        </button>
+    </nav>
+
     <footer class="main-footer">
-        <video autoplay muted loop id="footer-video">
-            <source src="images/black.mp4" type="video/mp4">
-        </video>
-        <div class="container">
-            <h2>Kontakt</h2>
-            <p><a href="mailto:domien02311@gmail.com" style="color: #fff; text-decoration: none; vertical-align: middle;"><img src="images/gmail.png" alt="Email" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 8px; filter: invert(1);"></a> domien02311@gmail.com</p>
-            <p>
-                <a href="https://www.linkedin.com/in/dominiksolpa" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/linkedin.png" alt="LinkedIn" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
-                <a href="https://www.instagram.com/solpadominik" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/instagram.png" alt="Instagram" style="height: 30px; width: 30px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
-                <a href="https://gitlab.com/Domien023" target="_blank" style="color: #fff; text-decoration: none; margin: 0 10px; vertical-align: middle;"><img src="images/gitlab.png" alt="GitLab" style="height: 24px; width: 24px; vertical-align: middle; margin-right: 5px; filter: invert(1);"></a>
-            </p>
-            <p>&copy; 2025 Dominik Solpa. Wszelkie prawa zastrzeżone.</p>
-        </div>
+        <p>&copy; 2025 Dominik Solpa. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
     <script src="script.js"></script>
