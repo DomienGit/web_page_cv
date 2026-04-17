@@ -22,14 +22,17 @@
             </button>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#skills">Technologie</a></li>
-                    <li><a href="#projects">Projekty</a></li>
-                    <li><a href="#about">O mnie</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#skills" data-i18n="nav_skills">Technologie</a></li>
+                    <li><a href="#projects" data-i18n="nav_projects">Projekty</a></li>
+                    <li><a href="#about" data-i18n="nav_about">O mnie</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Kontakt</a></li>
                     <li><a href="cv.pdf" target="_blank">CV</a></li>
                 </ul>
             </nav>
+            <button class="lang-toggle" aria-label="Change language">
+                <span class="lang-label">EN</span>
+            </button>
         </div>
     </header>
 
@@ -40,70 +43,70 @@
                 <source src="black.mp4" type="video/mp4">
             </video>
             <div class="hero-content">
-                <h1 class="hero-greeting">Cześć!</h1>
-                <p class="hero-description">Jestem Dominik. Łączę pasję do technologii z praktycznymi umiejętnościami – nie tylko piszę kod w Pythonie, ale też potrafię zautomatyzować jego wdrożenie na serwer.<br>Poza programowaniem ładuję baterie jeżdżąc na rowerze i próbując nowych rzeczy. <br>Aktualnie szukam swojej pierwszej pracy jako Backend Developer, gdzie będę mógł przełożyć moje portfolio na realną wartość dla firmy. <br>Zapraszam do sprawdzenia moich projektów!</p>
+                <h1 class="hero-greeting" data-i18n="hero_greeting">Cześć!</h1>
+                <p class="hero-description" data-i18n="hero_description">Jestem Dominik. Łączę pasję do technologii z praktycznymi umiejętnościami – nie tylko piszę kod w Pythonie, ale też potrafię zautomatyzować jego wdrożenie na serwer.<br>Poza programowaniem ładuję baterie jeżdżąc na rowerze i próbując nowych rzeczy. <br>Aktualnie szukam swojej pierwszej pracy jako Backend Developer, gdzie będę mógł przełożyć moje portfolio na realną wartość dla firmy. <br>Zapraszam do sprawdzenia moich projektów!</p>
             </div>
             <div class="scroll-indicator" aria-label="Scroll down">
                 <div class="scroll-mouse">
                     <div class="scroll-wheel"></div>
                 </div>
-                <span class="scroll-text">Scroll</span>
+                <span class="scroll-text" data-i18n="scroll_text">Scroll</span>
             </div>
         </section>
 
         <section id="skills" class="content-section" data-sal="slide-up">
             <div class="container">
-                <h2>Technologie</h2>
+                <h2 data-i18n="skills_title">Technologie</h2>
                 <ul class="skills-list">
                     <li class="skill-item">
-                        <div class="skill-header">
+                        <div class="skill-header" data-i18n="skill_backend_header">
                             Backend & Logika Aplikacji
                         </div>
                         <ul class="sub-skills">
-                            <li><strong>Język:</strong> Python</li>
-                            <li><strong>Frameworki:</strong> FastAPI, Flask</li>
-                            <li><strong>Architektura:</strong> Sockety, client-server</li>
-                            <li><strong>Wydajność:</strong> Threading, multiprocessing</li>
+                            <li data-i18n="skill_backend_1"><strong>Język:</strong> Python</li>
+                            <li data-i18n="skill_backend_2"><strong>Frameworki:</strong> FastAPI, Flask</li>
+                            <li data-i18n="skill_backend_3"><strong>Architektura:</strong> Sockety, client-server</li>
+                            <li data-i18n="skill_backend_4"><strong>Wydajność:</strong> Threading, multiprocessing</li>
                         </ul>
                     </li>
                     <li class="skill-item">
-                        <div class="skill-header">
+                        <div class="skill-header" data-i18n="skill_db_header">
                             Bazy Danych
                         </div>
                         <ul class="sub-skills">
                             <li>PostgreSQL</li>
                             <li>SQLite</li>
-                            <li><strong>Bezpieczeństwo:</strong> hash+salt</li>
-                            <li><strong>Projektowanie:</strong> Modelowanie danych, relacje</li>
+                            <li data-i18n="skill_db_3"><strong>Bezpieczeństwo:</strong> hash+salt</li>
+                            <li data-i18n="skill_db_4"><strong>Projektowanie:</strong> Modelowanie danych, relacje</li>
                         </ul>
                     </li>
                     <li class="skill-item">
-                        <div class="skill-header">
+                        <div class="skill-header" data-i18n="skill_devops_header">
                             Infrastruktura & DevOps
                         </div>
                         <ul class="sub-skills">
-                            <li><strong>Konteneryzacja:</strong> Docker</li>
-                            <li><strong>Serwery:</strong> Linux (konfiguracja i zarządzanie VPS)</li>
-                            <li><strong>Wersjonowanie kodu:</strong> Git</li>
+                            <li data-i18n="skill_devops_1"><strong>Konteneryzacja:</strong> Docker</li>
+                            <li data-i18n="skill_devops_2"><strong>Serwery:</strong> Linux (konfiguracja i zarządzanie VPS)</li>
+                            <li data-i18n="skill_devops_3"><strong>Wersjonowanie kodu:</strong> Git</li>
                         </ul>
                     </li>
                     <li class="skill-item">
-                        <div class="skill-header">
+                        <div class="skill-header" data-i18n="skill_ai_header">
                             Sztuczna Inteligencja & API
                         </div>
                         <ul class="sub-skills">
                             <li><strong>AI:</strong> OpenAI API</li>
-                            <li><strong>Integracje:</strong> Google Calendar API, Spotify API</li>
-                            <li><strong>Protokoły:</strong> IMAP/SMTP (automatyzacja mailowa)</li>
+                            <li data-i18n="skill_ai_2"><strong>Integracje:</strong> Google Calendar API, Spotify API</li>
+                            <li data-i18n="skill_ai_3"><strong>Protokoły:</strong> IMAP/SMTP (automatyzacja mailowa)</li>
                         </ul>
                     </li>
                     <li class="skill-item">
-                        <div class="skill-header">
+                        <div class="skill-header" data-i18n="skill_test_header">
                             Testowanie & Jakość Kodu
                         </div>
                         <ul class="sub-skills">
-                            <li><strong>Frameworki testowe:</strong> unittest, pytest</li>
-                            <li><strong>Praktyki:</strong> Clean Code, PEP8</li>
+                            <li data-i18n="skill_test_1"><strong>Frameworki testowe:</strong> unittest, pytest</li>
+                            <li data-i18n="skill_test_2"><strong>Praktyki:</strong> Clean Code, PEP8</li>
                         </ul>
                     </li>
                 </ul>
@@ -116,12 +119,12 @@
                 <source src="black.mp4" type="video/mp4">
             </video>
             <div class="container">
-                <h2>Projekty</h2>
+                <h2 data-i18n="projects_title">Projekty</h2>
                 <div class="projects-grid">
                     <div class="project-card" data-project="calendar-automation">
                         <div class="project-title">Calendar automation</div>
                         <div class="project-details">
-                            <p>Automatyzacja tworzenia wydarzeń w Google Kalendarzu na podstawie e-maili. System monitoruje skrzynkę i wykorzystuje AI (OpenAI) do ekstrakcji szczegółów spotkań.</p>
+                            <p data-i18n="project_calendar_desc">Automatyzacja tworzenia wydarzeń w Google Kalendarzu na podstawie e-maili. System monitoruje skrzynkę i wykorzystuje AI (OpenAI) do ekstrakcji szczegółów spotkań.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>FastAPI</span><span>OpenAI API</span><span>Google Calendar API</span>
                             </div>
@@ -130,7 +133,7 @@
                     <div class="project-card" data-project="lotnisko">
                         <div class="project-title">Lotnisko</div>
                         <div class="project-details">
-                            <p>Symulacja lotniska w czasie rzeczywistym z wizualizacją 2D i wielowątkowym zarządzaniem ruchem samolotów.</p>
+                            <p data-i18n="project_airport_desc">Symulacja lotniska w czasie rzeczywistym z wizualizacją 2D i wielowątkowym zarządzaniem ruchem samolotów.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>FastAPI</span><span>Pygame</span><span>PostgreSQL</span>
                             </div>
@@ -139,7 +142,7 @@
                     <div class="project-card" data-project="yt-lottery">
                         <div class="project-title">YTLottery</div>
                         <div class="project-details">
-                            <p>Aplikacja webowa hostowana na serwerze VPS, służąca do losowań na żywo na YouTube. Automatycznie pobiera uczestników z czatu i oferuje animację "slot machine".</p>
+                            <p data-i18n="project_ytlottery_desc">Aplikacja webowa hostowana na serwerze VPS, służąca do losowań na żywo na YouTube. Automatycznie pobiera uczestników z czatu i oferuje animację "slot machine".</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>FastAPI</span><span>GSAP</span><span>Vanilla JS</span>
                             </div>
@@ -148,7 +151,7 @@
                     <div class="project-card" data-project="client-server">
                         <div class="project-title">Client - Server</div>
                         <div class="project-details">
-                            <p>Aplikacja z uwierzytelnianiem i bezpiecznym systemem wymiany wiadomości oparta na socketach.</p>
+                            <p data-i18n="project_clientserver_desc">Aplikacja z uwierzytelnianiem i bezpiecznym systemem wymiany wiadomości oparta na socketach.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>Socket</span><span>SQLite</span><span>Hashlib</span>
                             </div>
@@ -157,7 +160,7 @@
                     <div class="project-card" data-project="devlog">
                         <div class="project-title">Devlog</div>
                         <div class="project-details">
-                            <p>Dziennik programisty z automatycznym tagowaniem wpisów przy użyciu NLP (spaCy) i konteneryzacją Docker.</p>
+                            <p data-i18n="project_devlog_desc">Dziennik programisty z automatycznym tagowaniem wpisów przy użyciu NLP (spaCy) i konteneryzacją Docker.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span>
                             </div>
@@ -166,7 +169,7 @@
                     <div class="project-card" data-project="rest-api-lotnisko">
                         <div class="project-title">REST API Lotnisko</div>
                         <div class="project-details">
-                            <p>Interfejs API do monitorowania stanu lotniska, historii lądowań oraz analizy danych o kolizjach.</p>
+                            <p data-i18n="project_restapi_desc">Interfejs API do monitorowania stanu lotniska, historii lądowań oraz analizy danych o kolizjach.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy</span>
                             </div>
@@ -175,7 +178,7 @@
                     <div class="project-card" data-project="spotify-api">
                         <div class="project-title">Spotify API</div>
                         <div class="project-details">
-                            <p>Integracja pozwalająca na sterowanie muzyką i wybór albumów bezpośrednio przez Spotify API.</p>
+                            <p data-i18n="project_spotify_desc">Integracja pozwalająca na sterowanie muzyką i wybór albumów bezpośrednio przez Spotify API.</p>
                             <div class="project-technologies">
                                 <span>Python</span><span>Requests</span><span>Spotify API</span><span>OAuth2</span>
                             </div>
@@ -193,8 +196,8 @@
                     <img src="me.jpg" alt="Dominik Solpa">
                 </div>
                 <div class="about-me-text">
-                    <h2>O mnie</h2>
-                    <p>W pracy stawiam na otwartą komunikację i wymianę wiedzy. Szukam środowiska, w którym będę mógł uczyć się od doświadczonych inżynierów, chętnie przyjmując feedback, aby stale stawać się lepszym programistą. Moje wcześniejsze doświadczenia w innych branżach nauczyły mnie dużej elastyczności, odpowiedzialności za zadania oraz umiejętności dogadywania się z każdym. Doskonale rozumiem, że technologia to tylko narzędzie – na koniec dnia liczy się to, by mój kod rozwiązywał realne problemy i dowoził wartość biznesową dla zespołu.</p>
+                    <h2 data-i18n="about_title">O mnie</h2>
+                    <p data-i18n="about_description">W pracy stawiam na otwartą komunikację i wymianę wiedzy. Szukam środowiska, w którym będę mógł uczyć się od doświadczonych inżynierów, chętnie przyjmując feedback, aby stale stawać się lepszym programistą. Moje wcześniejsze doświadczenia w innych branżach nauczyły mnie dużej elastyczności, odpowiedzialności za zadania oraz umiejętności dogadywania się z każdym. Doskonale rozumiem, że technologia to tylko narzędzie – na koniec dnia liczy się to, by mój kod rozwiązywał realne problemy i dowoził wartość biznesową dla zespołu.</p>
                 </div>
             </div>
         </section>
@@ -205,8 +208,8 @@
                 <source src="black.mp4" type="video/mp4">
             </video>
             <div class="container">
-                <h2>Kontakt</h2>
-                <p class="contact-subtitle">Masz pytanie lub chcesz współpracować? Napisz do mnie!</p>
+                <h2 data-i18n="contact_title">Kontakt</h2>
+                <p class="contact-subtitle" data-i18n="contact_subtitle">Masz pytanie lub chcesz współpracować? Napisz do mnie!</p>
                 <div class="contact-links">
                     <a href="mailto:domien02311@gmail.com" class="contact-card">
                         <img src="gmail.png" alt="Email" class="contact-icon">
@@ -234,28 +237,28 @@
     <nav class="dot-nav" aria-label="Sekcje strony">
         <button class="dot-link active" data-section="hero" aria-label="Home">
             <span class="dot"></span>
-            <span class="dot-label">Home</span>
+            <span class="dot-label" data-i18n="nav_home">Home</span>
         </button>
         <button class="dot-link" data-section="skills" aria-label="Technologie">
             <span class="dot"></span>
-            <span class="dot-label">Technologie</span>
+            <span class="dot-label" data-i18n="nav_skills">Technologie</span>
         </button>
         <button class="dot-link" data-section="projects" aria-label="Projekty">
             <span class="dot"></span>
-            <span class="dot-label">Projekty</span>
+            <span class="dot-label" data-i18n="nav_projects">Projekty</span>
         </button>
         <button class="dot-link" data-section="about" aria-label="O mnie">
             <span class="dot"></span>
-            <span class="dot-label">O mnie</span>
+            <span class="dot-label" data-i18n="nav_about">O mnie</span>
         </button>
         <button class="dot-link" data-section="contact" aria-label="Kontakt">
             <span class="dot"></span>
-            <span class="dot-label">Kontakt</span>
+            <span class="dot-label" data-i18n="nav_contact">Kontakt</span>
         </button>
     </nav>
 
     <footer class="main-footer">
-        <p>&copy; 2025 Dominik Solpa. Wszelkie prawa zastrzeżone.</p>
+        <p data-i18n="footer">&copy; 2025 Dominik Solpa. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
     <script src="script.js"></script>

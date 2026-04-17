@@ -716,6 +716,34 @@ body {
     filter: invert(1);
 }
 
+/* Language Toggle */
+.lang-toggle {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-light);
+}
+
+.lang-label {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
@@ -756,6 +784,11 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .lang-toggle {
+        right: 60px;
+        padding: 3px 10px;
+    }
+
     .hamburger {
         display: flex;
     }
