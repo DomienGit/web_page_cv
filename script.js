@@ -142,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainNav = document.querySelector('.main-nav');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     let currentSectionIndex = 0;
-    let isScrolling = false;
 
     // --- Scroll Indicator ---
     scrollIndicator.addEventListener('click', () => {
@@ -182,8 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentSectionIndex = index;
                     updateDotNav(entry.target.id);
                 }
-            } else {
-                entry.target.classList.remove('is-visible');
             }
         });
     }, {
@@ -206,47 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Smooth Scrolling Logic ---
     function scrollToSection(index) {
         if (index >= 0 && index < sections.length) {
-            isScrolling = true;
-            const targetTop = sections[index].offsetTop;
-            window.scrollTo({ top: targetTop, behavior: 'smooth' });
-
-            setTimeout(() => {
-                isScrolling = false;
-            }, 800);
+            sections[index].scrollIntoView({ behavior: 'smooth' });
         }
     }
-
-    // --- Wheel Event Listener (Magnetic Scroll) ---
-    window.addEventListener('wheel', (event) => {
-        if (isScrolling) {
-            event.preventDefault();
-            return;
-        }
-
-        const currentSection = sections[currentSectionIndex];
-
-        // Special handling for the 'projects' section internal scroll
-        if (currentSection.id === 'projects') {
-            const { scrollTop, scrollHeight, clientHeight } = currentSection;
-            if (scrollHeight > clientHeight) {
-                if (event.deltaY > 0 && scrollTop + clientHeight < scrollHeight - 5) return;
-                if (event.deltaY < 0 && scrollTop > 5) return;
-            }
-        }
-
-        // Section switching
-        if (event.deltaY > 0) {
-            if (currentSectionIndex < sections.length - 1) {
-                event.preventDefault();
-                scrollToSection(currentSectionIndex + 1);
-            }
-        } else {
-            if (currentSectionIndex > 0) {
-                event.preventDefault();
-                scrollToSection(currentSectionIndex - 1);
-            }
-        }
-    }, { passive: false });
 
     // --- Navigation Links ---
     navLinks.forEach(link => {
@@ -286,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const project = card.getAttribute('data-project');
             let url = '';
             switch(project) {
-                case 'calendar-automation': url = 'https://gitlab.com/Domien023/calendar-automation'; break;
+                case 'calendar-automation': url = 'https://gitlab.com/Domien023/email_agent.git'; break;
                 case 'lotnisko': url = 'https://gitlab.com/Domien023/airport-2.git'; break;
                 case 'yt-lottery': url = 'https://ytlottery.pl'; break;
                 case 'client-server': url = 'https://gitlab.com/Domien023/client-server.git'; break;

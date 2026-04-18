@@ -29,7 +29,7 @@
 
 ## Opcjonalne (do rozważenia)
 
-- [ ] **Przebudować custom scroll** — magnetic scroll (hijack kółka myszy) psuje dostępność i UX. Rozważyć zwykły smooth scroll z `scroll-behavior: smooth`.
+- [x] **Przebudować custom scroll** — magnetic scroll (hijack kółka myszy) psuje dostępność i UX. Rozważyć zwykły smooth scroll z `scroll-behavior: smooth`.
 - [ ] **Angielska wersja językowa** — toggle PL/EN, popularne w portfolio programistów.
 - [ ] **Lazy loading obrazków** — `loading="lazy"` na `<img>` w sekcji about.
 - [ ] **Open Graph meta tagi** — lepszy podgląd przy udostępnianiu linku (LinkedIn, Facebook, Slack).
