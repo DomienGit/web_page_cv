@@ -21,10 +21,10 @@
 
 ## Techniczne / SEO
 
-- [ ] **Dodać favicon** — brak ikony w zakładce przeglądarki.
-- [ ] **Dodać meta description** — poprawi SEO i wygląd w wynikach wyszukiwania.
+- [x] **Dodać favicon** — brak ikony w zakładce przeglądarki.
+- [x] **Dodać meta description** — poprawi SEO i wygląd w wynikach wyszukiwania.
 - [ ] **Zaktualizować copyright** — zmienić 2025 na 2026 lub zrobić dynamicznie w JS (`new Date().getFullYear()`).
-- [ ] **`prefers-reduced-motion`** — wyłączać animacje i autoplay wideo dla użytkowników z wrażliwością na ruch. Wymagane dla dostępności (WCAG).
+- [x] **`prefers-reduced-motion`** — wyłączać animacje i autoplay wideo dla użytkowników z wrażliwością na ruch. Wymagane dla dostępności (WCAG).
 - [ ] **Poprawić dostępność** — dodać `aria-label` do linków, `role` do nawigacji, focus styles dla klawiatury.
 
 ## Opcjonalne (do rozważenia)

@@ -114,6 +114,73 @@ document.querySelector('.lang-toggle').addEventListener('click', () => {
 
 setLanguage(currentLang);
 
+// --- Motion / Animations Toggle ---
+const motionToggle = document.querySelector('.motion-toggle');
+const motionOnIcon = document.querySelector('.motion-on');
+const motionOffIcon = document.querySelector('.motion-off');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let motionEnabled = localStorage.getItem('motionEnabled');
+
+// If user hasn't set a preference, respect OS setting
+if (motionEnabled === null) {
+    motionEnabled = !prefersReducedMotion.matches;
+} else {
+    motionEnabled = motionEnabled === 'true';
+}
+
+if (!motionEnabled) {
+    document.body.classList.add('reduced-motion');
+    pauseAllVideos();
+    updateMotionToggleUI(false);
+}
+
+function pauseAllVideos() {
+    document.querySelectorAll('.bg-video').forEach(v => v.pause());
+}
+
+function playAllVideos() {
+    document.querySelectorAll('.bg-video').forEach(v => v.play());
+}
+
+function updateMotionToggleUI(enabled) {
+    if (enabled) {
+        motionOnIcon.style.display = '';
+        motionOffIcon.style.display = 'none';
+        motionToggle.title = 'Wyłącz animacje';
+    } else {
+        motionOnIcon.style.display = 'none';
+        motionOffIcon.style.display = '';
+        motionToggle.title = 'Włącz animacje';
+    }
+}
+
+motionToggle.addEventListener('click', () => {
+    motionEnabled = !motionEnabled;
+    localStorage.setItem('motionEnabled', motionEnabled);
+    document.body.classList.toggle('reduced-motion', !motionEnabled);
+
+    if (motionEnabled) {
+        playAllVideos();
+    } else {
+        pauseAllVideos();
+    }
+    updateMotionToggleUI(motionEnabled);
+});
+
+// React to OS-level changes
+prefersReducedMotion.addEventListener('change', (e) => {
+    if (localStorage.getItem('motionEnabled') === null) {
+        motionEnabled = !e.matches;
+        document.body.classList.toggle('reduced-motion', !motionEnabled);
+        if (motionEnabled) {
+            playAllVideos();
+        } else {
+            pauseAllVideos();
+        }
+        updateMotionToggleUI(motionEnabled);
+    }
+});
+
 document.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
         header.classList.add("scrolled");
@@ -184,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.6
+        threshold: 0.2
     });
     sections.forEach(section => observer.observe(section));
 

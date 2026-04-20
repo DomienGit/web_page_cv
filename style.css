@@ -771,6 +771,29 @@ main > section {
     letter-spacing: 1px;
 }
 
+/* Motion Toggle */
+.motion-toggle {
+    position: absolute;
+    right: 136px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.motion-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-light);
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
@@ -814,6 +837,10 @@ main > section {
     .lang-toggle {
         right: 60px;
         padding: 3px 10px;
+    }
+
+    .motion-toggle {
+        right: 100px;
     }
 
     .hamburger {
@@ -941,7 +968,8 @@ main > section {
 }
 
 /* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce),
+.reduced-motion {
     .bg-video {
         display: none;
     }
@@ -958,5 +986,9 @@ main > section {
 
     main {
         scroll-snap-type: none;
+    }
+
+    .scroll-wheel {
+        animation: none;
     }
 }
