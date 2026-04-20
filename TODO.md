@@ -21,15 +21,15 @@
 
 ## Techniczne / SEO
 
-- [x] **Dodać favicon** — brak ikony w zakładce przeglądarki.
-- [x] **Dodać meta description** — poprawi SEO i wygląd w wynikach wyszukiwania.
+- [ ] **Dodać favicon** — brak ikony w zakładce przeglądarki.
+- [ ] **Dodać meta description** — poprawi SEO i wygląd w wynikach wyszukiwania.
 - [ ] **Zaktualizować copyright** — zmienić 2025 na 2026 lub zrobić dynamicznie w JS (`new Date().getFullYear()`).
-- [x] **`prefers-reduced-motion`** — wyłączać animacje i autoplay wideo dla użytkowników z wrażliwością na ruch. Wymagane dla dostępności (WCAG).
+- [ ] **`prefers-reduced-motion`** — wyłączać animacje i autoplay wideo dla użytkowników z wrażliwością na ruch. Wymagane dla dostępności (WCAG).
 - [ ] **Poprawić dostępność** — dodać `aria-label` do linków, `role` do nawigacji, focus styles dla klawiatury.
 
 ## Opcjonalne (do rozważenia)
 
 - [x] **Przebudować custom scroll** — magnetic scroll (hijack kółka myszy) psuje dostępność i UX. Rozważyć zwykły smooth scroll z `scroll-behavior: smooth`.
-- [ ] **Angielska wersja językowa** — toggle PL/EN, popularne w portfolio programistów.
+- [x] **Angielska wersja językowa** — toggle PL/EN, popularne w portfolio programistów.
 - [ ] **Lazy loading obrazków** — `loading="lazy"` na `<img>` w sekcji about.
 - [ ] **Open Graph meta tagi** — lepszy podgląd przy udostępnianiu linku (LinkedIn, Facebook, Slack).
