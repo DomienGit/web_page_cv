@@ -201,6 +201,8 @@ document.querySelectorAll('.bg-video').forEach(video => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
     const animatedElements = document.querySelectorAll('[data-sal]');
     const sections = document.querySelectorAll('main > section');
     const navLinks = document.querySelectorAll('.main-nav a');
